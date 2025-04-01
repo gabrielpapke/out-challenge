@@ -19,6 +19,4 @@ import { MenuComponent } from './components/menu/menu.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  title = 'out-challenge';
-}
+export class AppComponent {}
