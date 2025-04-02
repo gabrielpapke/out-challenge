@@ -1,0 +1,15 @@
+<form [formGroup]="form" class="flex gap-4">
+  <mat-form-field class="w-full">
+    <input
+      type="number"
+      matInput
+      [formControl]="form.controls.year"
+      placeholder="Search by year"
+    />
+  </mat-form-field>
+  <div class="h-14 flex items-center">
+    <button mat-icon-button aria-label="Search">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+</form>
