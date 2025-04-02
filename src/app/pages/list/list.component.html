@@ -1,1 +1,18 @@
-<p>list</p>
+<app-card>
+  <h2 card-title>List movies</h2>
+  <div card-content class="pt-4">
+    <app-list-table [data]="dataSource" />
+
+    <div class="flex justify-center">
+      <mat-paginator
+        [length]="dataSource.length"
+        [pageSize]="15"
+        [hidePageSize]="true"
+        [showFirstLastButtons]="true"
+        [pageIndex]="0"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</app-card>

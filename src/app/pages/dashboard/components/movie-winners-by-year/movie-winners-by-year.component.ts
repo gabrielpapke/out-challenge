@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IMovie } from 'src/app/interfaces/movie.interface';
+import { moviesMock } from 'src/mocks/movies.mock';
 import { CardComponent } from '../../../../components/card/card.component';
 import { MovieWinnersByYearSearchFormComponent } from './search-form/search-form.component';
 import { MovieWinnersByYearTableComponent } from './table/table.component';
@@ -15,70 +16,5 @@ import { MovieWinnersByYearTableComponent } from './table/table.component';
   styleUrl: './movie-winners-by-year.component.scss',
 })
 export class MovieWinnersByYearComponent {
-  data: IMovie[] = [
-    {
-      id: 99,
-      year: 1990,
-      title: 'Movie Title',
-      studios: ['Studio Name'],
-      producers: [' Producer Name '],
-      winner: true,
-    },
-    {
-      id: 100,
-      year: 1990,
-      title: 'Movie Title 2',
-      studios: ['Studio Name'],
-      producers: [' Producer Name '],
-      winner: true,
-    },
-    {
-      id: 101,
-      year: 1990,
-      title: 'Movie Title 3',
-      studios: ['Studio Name'],
-      producers: [' Producer Name '],
-      winner: true,
-    },
-    {
-      id: 101,
-      year: 1990,
-      title: 'Movie Title 3',
-      studios: ['Studio Name'],
-      producers: [' Producer Name '],
-      winner: true,
-    },
-    {
-      id: 101,
-      year: 1990,
-      title: 'Movie Title 3',
-      studios: ['Studio Name'],
-      producers: [' Producer Name '],
-      winner: true,
-    },
-    {
-      id: 101,
-      year: 1990,
-      title: 'Movie Title 3',
-      studios: ['Studio Name'],
-      producers: [' Producer Name '],
-      winner: true,
-    },
-    {
-      id: 101,
-      year: 1990,
-      title: 'Movie Title 3',
-      studios: ['Studio Name'],
-      producers: [' Producer Name '],
-      winner: true,
-    },
-    {
-      id: 101,
-      year: 1990,
-      title: 'Movie Title 3',
-      studios: ['Studio Name'],
-      producers: [' Producer Name '],
-      winner: true,
-    },
-  ];
+  data: IMovie[] = moviesMock;
 }

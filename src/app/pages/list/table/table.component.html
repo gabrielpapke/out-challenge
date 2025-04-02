@@ -1,0 +1,43 @@
+<table mat-table [dataSource]="data()">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="year">
+    <th mat-header-cell *matHeaderCellDef class="w-32">
+      <div class="text-center">Year</div>
+      <mat-form-field>
+        <input type="number" matInput placeholder="Filter by year" />
+      </mat-form-field>
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.year }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Title</th>
+    <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="winner">
+    <th mat-header-cell *matHeaderCellDef class="w-32">
+      <div class="text-center">Winner</div>
+
+      <mat-form-field>
+        <mat-select>
+          @for (option of [{ value: null, label: 'Yes/No' }, { value: true,
+          label: 'Yes' },{ value: false, label: 'No' }]; track option.label) {
+          <mat-option [value]="option.value">{{ option.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.winner | yesNo }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="['id', 'year', 'title', 'winner']"></tr>
+  <tr
+    mat-row
+    *matRowDef="let row; columns: ['id', 'year', 'title', 'winner']"
+  ></tr>
+</table>

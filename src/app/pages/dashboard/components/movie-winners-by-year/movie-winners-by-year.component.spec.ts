@@ -8,9 +8,8 @@ describe('MovieWinnersByYearComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MovieWinnersByYearComponent]
-    })
-    .compileComponents();
+      imports: [MovieWinnersByYearComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MovieWinnersByYearComponent);
     component = fixture.componentInstance;

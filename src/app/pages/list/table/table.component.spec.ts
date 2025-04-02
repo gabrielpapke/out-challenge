@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { moviesMock } from 'src/mocks/movies.mock';
-import { MovieWinnersByYearTableComponent } from './table.component';
+import { ListTableComponent } from './table.component';
 
-describe('MovieWinnersByYearTableComponent', () => {
-  let component: MovieWinnersByYearTableComponent;
-  let fixture: ComponentFixture<MovieWinnersByYearTableComponent>;
+describe('ListTableComponent', () => {
+  let component: ListTableComponent;
+  let fixture: ComponentFixture<ListTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MovieWinnersByYearTableComponent],
+      imports: [ListTableComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MovieWinnersByYearTableComponent);
+    fixture = TestBed.createComponent(ListTableComponent);
     component = fixture.componentInstance;
   });
 
