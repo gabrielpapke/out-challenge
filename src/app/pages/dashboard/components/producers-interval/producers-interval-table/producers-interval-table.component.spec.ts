@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { producersIntervalMock } from 'src/mocks/producers-interval.mock';
+import { producersIntervalMock } from '@mocks/producers-interval.mock';
 import { ProducersIntervalTableComponent } from './producers-interval-table.component';
 
 describe('ProducersIntervalTableComponent', () => {

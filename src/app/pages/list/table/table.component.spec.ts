@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { moviesMock } from 'src/mocks/movies.mock';
+import { movieDataMock } from '@mocks/movies-data.mock';
 import { ListTableComponent } from './table.component';
 
 describe('ListTableComponent', () => {
@@ -17,7 +17,8 @@ describe('ListTableComponent', () => {
   });
 
   it('should create', () => {
-    fixture.componentRef.setInput('data', structuredClone(moviesMock));
+    fixture.componentRef.setInput('data', structuredClone(movieDataMock));
+    fixture.componentRef.setInput('loading', false);
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });

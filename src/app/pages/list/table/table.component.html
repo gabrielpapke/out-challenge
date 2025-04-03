@@ -1,4 +1,5 @@
-<table mat-table [dataSource]="data()">
+@if (!loading()) {
+<table mat-table [dataSource]="data()?.content || []">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>ID</th>
     <td mat-cell *matCellDef="let element">{{ element.id }}</td>
@@ -41,3 +42,22 @@
     *matRowDef="let row; columns: ['id', 'year', 'title', 'winner']"
   ></tr>
 </table>
+}
+<!-- Loading -->
+@if (loading()) {
+<p>Carregando...</p>
+}
+<!-- Paginator -->
+@if (data()?.content) {
+<mat-paginator
+  (page)="pageChange($event)"
+  [length]="data()?.totalElements"
+  [pageSize]="14"
+  [disabled]="loading()"
+  [hidePageSize]="true"
+  [showFirstLastButtons]="true"
+  [pageIndex]="0"
+  aria-label="Select page"
+>
+</mat-paginator>
+}

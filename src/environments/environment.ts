@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: '',
+  apiUrl: 'https://challenge.outsera.tech/api',
 };

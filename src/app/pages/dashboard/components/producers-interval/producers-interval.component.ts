@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { producersIntervalMock } from 'src/mocks/producers-interval.mock';
+import { producersIntervalMock } from '@mocks/producers-interval.mock';
 import { CardComponent } from '../../../../components/card/card.component';
 import { ProducersIntervalTableComponent } from './producers-interval-table/producers-interval-table.component';
 import { IProducersInterval } from './producers-interval.interface';

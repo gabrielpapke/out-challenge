@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { moviesMock } from 'src/mocks/movies.mock';
+import { moviesMock } from '@mocks/movies-content.mock';
 import { MovieWinnersByYearTableComponent } from './table.component';
 
 describe('MovieWinnersByYearTableComponent', () => {

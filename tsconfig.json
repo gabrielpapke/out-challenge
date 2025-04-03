@@ -9,7 +9,8 @@
       "@services/*": ["src/app/services/*"],
       "@guards/*": ["src/app/guards/*"],
       "@directives/*": ["src/app/directives/*"],
-      "@pages/*": ["src/app/pages/*"]
+      "@pages/*": ["src/app/pages/*"],
+      "@mocks/*": ["src/mocks/*"]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,
