@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-import { CardComponent } from '../../../../components/card/card.component';
+import { CardComponent } from '@ui/card/card.component';
 import { IStudioTopWinnerItem } from './top-winners.interface';
 
 @Component({

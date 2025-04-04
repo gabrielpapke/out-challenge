@@ -1,14 +1,13 @@
 import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   inject,
   signal,
 } from '@angular/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { CardComponent } from '@components/card/card.component';
 import { MoviesService } from '@services/movies.service';
+import { CardComponent } from '@ui/card/card.component';
 import { BehaviorSubject, finalize, shareReplay, switchMap } from 'rxjs';
 import { ListTableComponent } from './table/table.component';
 
@@ -27,7 +26,6 @@ import { ListTableComponent } from './table/table.component';
 })
 export class ListComponent {
   moviesService = inject(MoviesService);
-  cdr = inject(ChangeDetectorRef);
   loading = signal(true);
 
   private params$ = new BehaviorSubject<{ page: number }>({ page: 0 });

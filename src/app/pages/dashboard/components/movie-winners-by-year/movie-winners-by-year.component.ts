@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IMovie } from 'src/app/interfaces/movie.interface';
 
 import { moviesMock } from '@mocks/movies-content.mock';
-import { CardComponent } from '../../../../components/card/card.component';
+import { CardComponent } from '@ui/card/card.component';
 import { MovieWinnersByYearSearchFormComponent } from './search-form/search-form.component';
 import { MovieWinnersByYearTableComponent } from './table/table.component';
 

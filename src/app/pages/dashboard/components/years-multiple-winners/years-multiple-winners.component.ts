@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
-import { CardComponent } from '../../../../components/card/card.component';
+import { CardComponent } from '@ui/card/card.component';
+import { TableModule } from '@ui/table/table.component.module';
 import { IYearsMultipleWinnersItem } from './years-multiple-winners.interface';
 
 @Component({
   selector: 'app-years-multiple-winners',
-  imports: [CardComponent, MatTableModule],
+  imports: [CardComponent, TableModule],
   templateUrl: './years-multiple-winners.component.html',
   styleUrl: './years-multiple-winners.component.scss',
 })

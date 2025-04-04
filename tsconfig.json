@@ -10,7 +10,8 @@
       "@guards/*": ["src/app/guards/*"],
       "@directives/*": ["src/app/directives/*"],
       "@pages/*": ["src/app/pages/*"],
-      "@mocks/*": ["src/mocks/*"]
+      "@mocks/*": ["src/mocks/*"],
+      "@ui/*": ["src/app/ui/*"]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,
