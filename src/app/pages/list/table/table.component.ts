@@ -119,6 +119,12 @@ export class ListTableComponent {
     );
   }
 
+  clearWinnerFilter(event: Event) {
+    event.stopPropagation();
+
+    this.form.controls.winner.reset();
+  }
+
   winnerFilterValueChanges() {
     this.form.controls.winner.valueChanges
       .pipe(
