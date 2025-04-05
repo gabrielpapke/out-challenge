@@ -1,4 +1,15 @@
-<table mat-table [dataSource]="loading() ? emptyRows() : data()">
+@if (loading() && (data() === null)) {
+<div>
+  <div class="spinner-container">
+    <div class="custom-spinner"></div>
+  </div>
+</div>
+} @else {
+<table
+  *ngIf="!hasError()"
+  mat-table
+  [dataSource]="loading() ? emptyRows() : data()"
+>
   <ng-container *ngFor="let columnDef of columnDefs">
     <ng-container [matColumnDef]="columnDef.name">
       <th
@@ -25,6 +36,13 @@
     </ng-container>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="columns()"></tr>
-  <tr mat-row *matRowDef="let row; columns: columns()"></tr>
+  <tr tabindex="0" mat-header-row *matHeaderRowDef="columns()"></tr>
+  <tr tabindex="0" mat-row *matRowDef="let row; columns: columns()"></tr>
 </table>
+} @if(data()?.length === 0 && !loading() && !hasError()) {
+<p class="py-14 text-center">Nenhum registro encontrado.</p>
+}
+<!-- Error -->
+@if(hasError()) {
+<p>Erro ao carregar</p>
+}

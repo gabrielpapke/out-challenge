@@ -2,9 +2,13 @@
   <h2 card-title>List movies</h2>
   <div card-content class="pt-4">
     <app-list-table
+      [defaultPageLength]="defaultPageLength"
+      [currentPage]="currentPage()"
       [loading]="loading()"
+      [hasError]="hasError()"
       [data]="getMovies$ | async"
       (onPageChange)="onPageChange($event)"
+      (onFilter)="onFilter($event)"
     />
   </div>
 </app-card>

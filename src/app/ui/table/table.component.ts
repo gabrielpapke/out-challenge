@@ -1,5 +1,6 @@
 import {
   AfterContentInit,
+  ChangeDetectionStrategy,
   Component,
   computed,
   ContentChildren,
@@ -14,6 +15,7 @@ import { MatColumnDef } from '@angular/material/table';
   standalone: false,
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent implements AfterContentInit {
   @ContentChildren(MatColumnDef) columnDefs!: QueryList<MatColumnDef>;
@@ -22,10 +24,15 @@ export class TableComponent implements AfterContentInit {
   columns = signal<string[]>([]);
   loading = input.required<boolean>();
   shimmerRows = input.required<number>();
+  hasError = input.required<boolean>();
 
-  emptyRows = computed(() =>
-    Array.from({ length: this.shimmerRows() }, (_, i) => i + 1)
-  );
+  currentShimmerRows = computed(() => {
+    return (this.data()?.length ?? 0) > 0
+      ? this.data()?.length!
+      : this.shimmerRows();
+  });
+
+  emptyRows = computed(() => Array.from({ length: 15 }, (_, i) => i + 1));
 
   ngAfterContentInit() {
     const columns = this.columnDefs.map((item) => item.name);

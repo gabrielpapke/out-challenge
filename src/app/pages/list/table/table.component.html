@@ -1,62 +1,91 @@
-@if (!loading()) {
-<table mat-table [dataSource]="data()?.content || []">
+<app-table
+  [loading]="loading()"
+  [shimmerRows]="defaultPageLength()"
+  [data]="data()?.content"
+  [hasError]="hasError()"
+  [formGroup]="form"
+>
   <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef>ID</th>
-    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    <span mat-header-cell *matHeaderCellDef>ID</span>
+    <span mat-cell *matCellDef="let element">{{ element.id }}</span>
   </ng-container>
 
   <ng-container matColumnDef="year">
-    <th mat-header-cell *matHeaderCellDef class="w-32">
-      <div class="text-center">Year</div>
+    <div mat-header-cell *matHeaderCellDef class="flex flex-col max-w-56">
+      <div
+        class="text-center"
+        [ngClass]="{ 'label-error': form.controls.year.errors }"
+      >
+        Year
+      </div>
       <mat-form-field>
-        <input type="number" matInput placeholder="Filter by year" />
+        <input
+          type="text"
+          matInput
+          [formControl]="form.controls.year"
+          placeholder="Filter by year"
+        />
+
+        @if (form.controls.year.value) {
+        <button
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="clearYearFilter()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        }
       </mat-form-field>
-    </th>
-    <td mat-cell *matCellDef="let element">{{ element.year }}</td>
+    </div>
+    <span mat-cell *matCellDef="let element">{{ element.year }}</span>
   </ng-container>
 
   <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef>Title</th>
-    <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+    <span mat-header-cell *matHeaderCellDef>Title</span>
+    <span mat-cell *matCellDef="let element">{{ element.title }}</span>
   </ng-container>
 
   <ng-container matColumnDef="winner">
-    <th mat-header-cell *matHeaderCellDef class="w-32">
+    <div mat-header-cell *matHeaderCellDef class="flex flex-col max-w-56">
       <div class="text-center">Winner</div>
 
       <mat-form-field>
-        <mat-select>
-          @for (option of [{ value: null, label: 'Yes/No' }, { value: true,
-          label: 'Yes' },{ value: false, label: 'No' }]; track option.label) {
+        <mat-select
+          [placeholder]="'Yes/No'"
+          [formControl]="form.controls.winner"
+        >
+          @for (option of yesNoOptions; track option.label) {
           <mat-option [value]="option.value">{{ option.label }}</mat-option>
           }
         </mat-select>
-      </mat-form-field>
-    </th>
-    <td mat-cell *matCellDef="let element">{{ element.winner | yesNo }}</td>
-  </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="['id', 'year', 'title', 'winner']"></tr>
-  <tr
-    mat-row
-    *matRowDef="let row; columns: ['id', 'year', 'title', 'winner']"
-  ></tr>
-</table>
-}
-<!-- Loading -->
-@if (loading()) {
-<p>Carregando...</p>
-}
+        @if (form.controls.winner.value) {
+        <button
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="form.controls.winner.reset()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        }
+      </mat-form-field>
+    </div>
+    <span mat-cell *matCellDef="let element">{{ element.winner | yesNo }}</span>
+  </ng-container>
+</app-table>
+
 <!-- Paginator -->
-@if (data()?.content) {
+@if (data()?.content?.length) {
 <mat-paginator
   (page)="pageChange($event)"
   [length]="data()?.totalElements"
-  [pageSize]="14"
+  [pageSize]="defaultPageLength()"
   [disabled]="loading()"
   [hidePageSize]="true"
   [showFirstLastButtons]="true"
-  [pageIndex]="0"
+  [pageIndex]="currentPage()"
   aria-label="Select page"
 >
 </mat-paginator>
