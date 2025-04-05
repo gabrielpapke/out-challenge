@@ -8,7 +8,7 @@ import {
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MoviesService } from '@services/movies.service';
 import { CardComponent } from '@ui/card/card.component';
-import { BehaviorSubject, catchError, finalize, switchMap } from 'rxjs';
+import { BehaviorSubject, catchError, EMPTY, finalize, switchMap } from 'rxjs';
 import { IMovieFilter } from './interfaces/movies-filter.interface';
 import { ListTableComponent } from './table/table.component';
 
@@ -49,7 +49,6 @@ export class ListComponent {
       this.hasError.set(false);
       this.currentPage.set(params.page ?? 0);
       this.currentFilter.set(params);
-      console.log(params);
 
       return this.moviesService.getMovies(params).pipe(
         finalize(() => {
@@ -57,7 +56,7 @@ export class ListComponent {
         }),
         catchError(() => {
           this.hasError.set(true);
-          return [];
+          return EMPTY;
         })
       );
     })

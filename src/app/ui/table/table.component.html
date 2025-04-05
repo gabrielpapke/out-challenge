@@ -1,9 +1,5 @@
-@if (loading() && (data() === null)) {
-<div>
-  <div class="spinner-container">
-    <div class="custom-spinner"></div>
-  </div>
-</div>
+@if (firstLoading()) {
+<app-spinner />
 } @else {
 <table
   *ngIf="!hasError()"

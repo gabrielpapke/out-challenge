@@ -24,7 +24,7 @@ export class TableComponent implements AfterContentInit {
   columns = signal<string[]>([]);
   loading = input.required<boolean>();
   shimmerRows = input.required<number>();
-  hasError = input.required<boolean>();
+  hasError = input<boolean>();
 
   currentShimmerRows = computed(() => {
     return (this.data()?.length ?? 0) > 0
@@ -32,7 +32,11 @@ export class TableComponent implements AfterContentInit {
       : this.shimmerRows();
   });
 
-  emptyRows = computed(() => Array.from({ length: 15 }, (_, i) => i + 1));
+  emptyRows = computed(() =>
+    Array.from({ length: this.currentShimmerRows() }, (_, i) => i + 1)
+  );
+
+  firstLoading = computed(() => this.loading() && this.data() === null);
 
   ngAfterContentInit() {
     const columns = this.columnDefs.map((item) => item.name);

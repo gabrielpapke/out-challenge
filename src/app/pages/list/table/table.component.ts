@@ -54,7 +54,10 @@ import { IMovieFilter } from '../interfaces/movies-filter.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListTableComponent {
-  private debounceTimeSubject = new BehaviorSubject<number>(1000); // Tempo padrão de debounce
+  private readonly defaultDebounceTime = 1000;
+  private debounceTimeSubject = new BehaviorSubject<number>(
+    this.defaultDebounceTime
+  );
 
   data = input.required<IMovieData | null>();
   currentPage = input.required<number>();
@@ -110,7 +113,10 @@ export class ListTableComponent {
 
     this.form.controls.year.reset();
 
-    setTimeout(() => this.debounceTimeSubject.next(1000), 0);
+    setTimeout(
+      () => this.debounceTimeSubject.next(this.defaultDebounceTime),
+      0
+    );
   }
 
   winnerFilterValueChanges() {
