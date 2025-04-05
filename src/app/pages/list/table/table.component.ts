@@ -16,7 +16,6 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
@@ -31,6 +30,7 @@ import {
 } from 'rxjs';
 import { IMovieData } from 'src/app/interfaces/list-movies.interface';
 import { YesNoPipe } from 'src/app/pipes/yes-no.pipe';
+import { YearHeaderCellComponent } from '../components/year-header-cell/year-header-cell.component';
 import { IMovieFilter } from '../interfaces/movies-filter.interface';
 
 @Component({
@@ -43,11 +43,11 @@ import { IMovieFilter } from '../interfaces/movies-filter.interface';
     FormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
     MatPaginatorModule,
+    YearHeaderCellComponent,
   ],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
