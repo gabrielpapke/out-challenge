@@ -25,6 +25,7 @@ export class TableComponent implements AfterContentInit {
   loading = input.required<boolean>();
   shimmerRows = input.required<number>();
   hasError = input<boolean>();
+  stickyHeader = input<boolean>(false);
 
   currentShimmerRows = computed(() => {
     return (this.data()?.length ?? 0) > 0

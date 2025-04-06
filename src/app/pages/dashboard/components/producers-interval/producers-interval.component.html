@@ -1,6 +1,6 @@
 <app-card>
   <h2 card-title>Producers with longest and shortest interval between wins</h2>
-  <div card-content class="pt-8 flex flex-col gap-4">
+  <div card-content class="flex flex-col gap-4">
     <app-producers-interval-table
       title="Maximum"
       [data]="(data$ | async)?.max"
