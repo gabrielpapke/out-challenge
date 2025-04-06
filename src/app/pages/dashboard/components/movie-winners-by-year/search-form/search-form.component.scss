@@ -1,0 +1,16 @@
+@use "@angular/material" as mat;
+
+.submit-button {
+  &:disabled {
+    background-color: var(--mat-sys-surface-container);
+  }
+
+  &:not(:disabled) {
+    background-color: var(--mat-sys-primary);
+    @include mat.icon-button-overrides(
+      (
+        icon-color: white,
+      )
+    );
+  }
+}

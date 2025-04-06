@@ -1,10 +1,10 @@
-<div class="min-h-[200px] max-h-[300px] overflow-auto">
+<div class="min-h-[200px] max-h-[370px] overflow-auto">
   <app-table
     [loading]="loading()"
     [hasError]="hasError()"
     [data]="data()"
     [stickyHeader]="true"
-    [shimmerRows]="3"
+    [shimmerRows]="6"
   >
     <ng-container matColumnDef="id">
       <span mat-header-cell *matHeaderCellDef>ID</span>

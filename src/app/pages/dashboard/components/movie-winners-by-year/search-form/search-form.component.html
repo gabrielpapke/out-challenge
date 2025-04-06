@@ -1,14 +1,32 @@
-<form [formGroup]="form" class="flex gap-4">
+<form [formGroup]="form" class="flex gap-4" (ngSubmit)="onSubmit()">
   <mat-form-field class="w-full">
     <input
-      type="number"
+      type="text"
       matInput
       [formControl]="form.controls.year"
       placeholder="Search by year"
     />
+
+    @if (form.controls.year.value) {
+    <button
+      type="button"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="onClearYearFilter()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    }
   </mat-form-field>
   <div class="h-14 flex items-center">
-    <button mat-icon-button aria-label="Search">
+    <button
+      type="submit"
+      class="submit-button"
+      mat-icon-button
+      aria-label="Search"
+      [disabled]="form.invalid"
+    >
       <mat-icon>search</mat-icon>
     </button>
   </div>

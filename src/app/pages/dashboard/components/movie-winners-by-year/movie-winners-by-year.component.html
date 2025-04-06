@@ -1,7 +1,10 @@
 <app-card>
   <h2 card-title>List movie winners by year</h2>
   <div card-content class="pt-4">
-    <app-movie-winners-by-year-search-form *ngIf="!firstLoading()" />
+    <app-movie-winners-by-year-search-form
+      *ngIf="!firstLoading()"
+      (onSearch)="onSearch($event)"
+    />
 
     <app-movie-winners-by-year-table
       [data]="(data$ | async)?.content"

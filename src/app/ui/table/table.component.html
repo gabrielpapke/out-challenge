@@ -1,5 +1,5 @@
 @if (firstLoading()) {
-<div class="py-20">
+<div class="py-8">
   <app-spinner />
 </div>
 } @else {
@@ -41,10 +41,12 @@
   ></tr>
   <tr tabindex="0" mat-row *matRowDef="let row; columns: columns()"></tr>
 </table>
-} @if(data()?.length === 0 && !loading() && !hasError()) {
+}
+<!-- Empty State -->
+@if(data()?.length === 0 && !loading() && !hasError()) {
 <app-state type="info" title="Nenhum registro encontrado." />
 }
-<!-- Error -->
+<!-- Error State -->
 @if(hasError()) {
 <app-state
   type="error"
