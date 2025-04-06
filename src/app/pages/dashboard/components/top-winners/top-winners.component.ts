@@ -1,23 +1,30 @@
-import { Component } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
+import { AsyncPipe } from '@angular/common';
+import { Component, inject, signal } from '@angular/core';
+import { MoviesService } from '@services/movies.service';
 import { CardComponent } from '@ui/card/card.component';
-import { IStudioTopWinnerItem } from './top-winners.interface';
+import { TableModule } from '@ui/table/table.component.module';
+import { withLoadingAndError } from '@utils/observable-loading-error.util';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-top-winners',
-  imports: [CardComponent, MatTableModule],
+  imports: [AsyncPipe, CardComponent, TableModule],
   templateUrl: './top-winners.component.html',
   styleUrl: './top-winners.component.scss',
 })
 export class TopWinnersComponent {
-  dataSource: IStudioTopWinnerItem[] = [
-    {
-      name: 'Studio Name',
-      winCount: 9,
-    },
-    {
-      name: 'Studio Name',
-      winCount: 9,
-    },
-  ];
+  moviesService = inject(MoviesService);
+
+  loading = signal(true);
+  hasError = signal(false);
+
+  data$ = this.moviesService.getStudiosWithWinCount().pipe(
+    map((data) => {
+      return data.studios.sort((a, b) => b.winCount - a.winCount).slice(0, 3);
+    }),
+    withLoadingAndError(
+      this.loading.set.bind(this.loading),
+      this.hasError.set.bind(this.hasError)
+    )
+  );
 }

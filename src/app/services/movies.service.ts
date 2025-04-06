@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IStudioTopWinner } from '@pages/dashboard/components/top-winners/top-winners.interface';
 import { IYearsMultipleWinners } from '@pages/dashboard/components/years-multiple-winners/years-multiple-winners.interface';
 import { Observable } from 'rxjs';
 import { IMovieData } from '../interfaces/list-movies.interface';
@@ -13,6 +14,12 @@ export class MoviesService extends BaseApiService {
   getYearsMultipleWinners() {
     return this.get<IYearsMultipleWinners>('movies', {
       projection: 'years-with-multiple-winners',
+    });
+  }
+
+  getStudiosWithWinCount() {
+    return this.get<IStudioTopWinner>('movies', {
+      projection: 'studios-with-win-count',
     });
   }
 }

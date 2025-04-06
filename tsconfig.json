@@ -11,7 +11,8 @@
       "@directives/*": ["src/app/directives/*"],
       "@pages/*": ["src/app/pages/*"],
       "@mocks/*": ["src/mocks/*"],
-      "@ui/*": ["src/app/ui/*"]
+      "@ui/*": ["src/app/ui/*"],
+      "@utils/*": ["src/app/utils/*"]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,

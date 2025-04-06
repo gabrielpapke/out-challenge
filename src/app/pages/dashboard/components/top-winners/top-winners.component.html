@@ -1,19 +1,21 @@
 <app-card>
   <h2 card-title>Top 3 studio with winners</h2>
   <div card-content>
-    <table mat-table [dataSource]="dataSource">
+    <app-table
+      [loading]="loading()"
+      [hasError]="hasError()"
+      [data]="data$ | async"
+      [shimmerRows]="3"
+    >
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        <span mat-header-cell *matHeaderCellDef>Name</span>
+        <span mat-cell *matCellDef="let element">{{ element.name }}</span>
       </ng-container>
 
       <ng-container matColumnDef="winCount">
-        <th mat-header-cell *matHeaderCellDef>Win Count</th>
-        <td mat-cell *matCellDef="let element">{{ element.winCount }}</td>
+        <span mat-header-cell *matHeaderCellDef>Win Count</span>
+        <span mat-cell *matCellDef="let element">{{ element.winCount }}</span>
       </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="['name', 'winCount']"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['name', 'winCount']"></tr>
-    </table>
+    </app-table>
   </div>
 </app-card>
