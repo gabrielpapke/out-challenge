@@ -1,6 +1,6 @@
 {
   "buildCommand": "npm run build:all",
-  "outputDirectory": "dist/out-challenge",
+  "outputDirectory": "dist",
   "routes": [
     { "src": "/coverage/(.*)", "dest": "/coverage/$1" },
     { "src": "/docs/(.*)", "dest": "/docs/$1" }
