@@ -3,6 +3,6 @@
   "outputDirectory": "dist/out-challenge/browser",
   "routes": [
     { "src": "/coverage/(.*)", "dest": "/coverage/$1" },
-    { "src": "/docs/(.*)", "dest": "/docs/$1" }
+    { "src": "/docs/(.*)", "dest": "dist/out-challenge/browser/docs/$1" }
   ]
 }
