@@ -71,6 +71,8 @@ export class ListComponent {
 
   onPageChange(page: number) {
     this.params$.next({ ...this.currentFilter(), page });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   onFilter(filter: Partial<IMovieFilter>) {
