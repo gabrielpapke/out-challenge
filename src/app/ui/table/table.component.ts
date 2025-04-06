@@ -5,6 +5,7 @@ import {
   computed,
   ContentChildren,
   input,
+  output,
   QueryList,
   signal,
 } from '@angular/core';
@@ -26,6 +27,8 @@ export class TableComponent implements AfterContentInit {
   shimmerRows = input.required<number>();
   hasError = input<boolean>();
   stickyHeader = input<boolean>(false);
+
+  onRetry = output<void>();
 
   currentShimmerRows = computed(() => {
     return (this.data()?.length ?? 0) > 0

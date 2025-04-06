@@ -5,6 +5,7 @@
       [loading]="loading()"
       [hasError]="hasError()"
       [data]="data$ | async"
+      (onRetry)="onRetry()"
       [shimmerRows]="3"
     >
       <ng-container matColumnDef="name">

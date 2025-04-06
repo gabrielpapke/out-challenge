@@ -7,7 +7,7 @@
 
         @if(type() === 'error') {
         <div>
-          <button mat-flat-button>Recarregar</button>
+          <button mat-flat-button (click)="onRetry.emit()">Recarregar</button>
         </div>
         }
       </div>
