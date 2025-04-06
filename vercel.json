@@ -1,0 +1,13 @@
+{
+  "routes": [
+    { "src": "/coverage/(.*)", "dest": "/coverage/$1" },
+    { "src": "/docs/(.*)", "dest": "/docs/$1" }
+  ],
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    }
+  ]
+}
