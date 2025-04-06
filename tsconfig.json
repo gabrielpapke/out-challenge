@@ -12,7 +12,8 @@
       "@pages/*": ["src/app/pages/*"],
       "@mocks/*": ["src/mocks/*"],
       "@ui/*": ["src/app/ui/*"],
-      "@utils/*": ["src/app/utils/*"]
+      "@utils/*": ["src/app/utils/*"],
+      "@validators/*": ["src/app/validators/*"]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,

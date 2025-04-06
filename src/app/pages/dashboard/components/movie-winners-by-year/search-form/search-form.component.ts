@@ -4,12 +4,12 @@ import {
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { CustomValidators } from '@validators/custom.validators';
 
 @Component({
   selector: 'app-movie-winners-by-year-search-form',
@@ -30,10 +30,7 @@ export class MovieWinnersByYearSearchFormComponent {
   lastValueFiltered = signal('');
   form = new FormGroup({
     year: new FormControl('', {
-      validators: [
-        Validators.pattern(/^\d{4}$/),
-        Validators.max(new Date().getFullYear()),
-      ],
+      validators: [CustomValidators.year()],
       nonNullable: true,
     }),
   });

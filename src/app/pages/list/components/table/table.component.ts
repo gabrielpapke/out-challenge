@@ -11,9 +11,9 @@ import {
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
 import { TableModule } from '@ui/table/table.component.module';
+import { CustomValidators } from '@validators/custom.validators';
 import {
   BehaviorSubject,
   debounceTime,
@@ -58,10 +58,7 @@ export class ListTableComponent {
 
   form = new FormGroup({
     year: new FormControl('', {
-      validators: [
-        Validators.pattern(/^\d{4}$/),
-        Validators.max(new Date().getFullYear()),
-      ],
+      validators: [CustomValidators.year()],
       nonNullable: true,
     }),
     winner: new FormControl('', {
