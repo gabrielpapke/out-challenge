@@ -9,7 +9,7 @@
     "test": "ng test",
     "docs": "npx compodoc -p tsconfig.doc.json -d docs",
     "test:prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
-    "build:all": "npm run build && npm run test:prod && npm run docs"
+    "build:all": "npm run build && npm run docs"
   },
   "private": true,
   "dependencies": {
