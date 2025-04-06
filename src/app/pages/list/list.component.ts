@@ -16,8 +16,8 @@ import {
   switchMap,
 } from 'rxjs';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { ListTableComponent } from './components/table/table.component';
 import { IMovieFilter } from './interfaces/movies-filter.interface';
-import { ListTableComponent } from './table/table.component';
 
 @Component({
   selector: 'app-list',

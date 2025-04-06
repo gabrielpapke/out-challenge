@@ -24,9 +24,9 @@ import {
 } from 'rxjs';
 import { IMovieData } from 'src/app/interfaces/list-movies.interface';
 import { YesNoPipe } from 'src/app/pipes/yes-no.pipe';
-import { WinnerHeaderCellComponent } from '../components/winner-header-cell/winner-header-cell.component';
-import { YearHeaderCellComponent } from '../components/year-header-cell/year-header-cell.component';
-import { IMovieFilter } from '../interfaces/movies-filter.interface';
+import { IMovieFilter } from '../../interfaces/movies-filter.interface';
+import { WinnerHeaderCellComponent } from '../winner-header-cell/winner-header-cell.component';
+import { YearHeaderCellComponent } from '../year-header-cell/year-header-cell.component';
 
 @Component({
   selector: 'app-list-table',
