@@ -1,16 +1,19 @@
 <app-card>
   <h2 card-title>List years with multiple winners</h2>
   <div card-content>
-    <app-table [loading]="false" [data]="dataSource" [shimmerRows]="3">
+    <app-table
+      [loading]="loading()"
+      [hasError]="hasError()"
+      [data]="data$ | async"
+      [shimmerRows]="3"
+    >
       <ng-container matColumnDef="year">
-        <span mat-header-cell *matHeaderCellDef class="w-1/2 block">Year</span>
+        <span mat-header-cell *matHeaderCellDef>Year</span>
         <span mat-cell *matCellDef="let element">{{ element.year }}</span>
       </ng-container>
 
       <ng-container matColumnDef="winnerCount">
-        <span mat-header-cell *matHeaderCellDef class="w-1/2 block"
-          >Win Count</span
-        >
+        <span mat-header-cell *matHeaderCellDef>Win Count</span>
         <span mat-cell *matCellDef="let element">{{
           element.winnerCount
         }}</span>
