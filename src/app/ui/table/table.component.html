@@ -1,5 +1,7 @@
 @if (firstLoading()) {
-<app-spinner />
+<div class="py-20">
+  <app-spinner />
+</div>
 } @else {
 <table
   *ngIf="!hasError()"
@@ -36,9 +38,12 @@
   <tr tabindex="0" mat-row *matRowDef="let row; columns: columns()"></tr>
 </table>
 } @if(data()?.length === 0 && !loading() && !hasError()) {
-<p class="py-14 text-center">Nenhum registro encontrado.</p>
+<app-state type="info" title="Nenhum registro encontrado." />
 }
 <!-- Error -->
 @if(hasError()) {
-<p>Erro ao carregar</p>
+<app-state
+  type="error"
+  title="Tivemos um problema. Tente novamente mais tarde."
+/>
 }

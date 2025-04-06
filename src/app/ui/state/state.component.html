@@ -1,0 +1,16 @@
+<mat-card appearance="raised" class="mt-8 card--{{ type() }}">
+  <mat-card-content>
+    <section class="py-20 flex gap-8 items-center justify-center">
+      <mat-icon class="!w-20 !h-20 text-[80px]">{{ icon() }}</mat-icon>
+      <div class="flex flex-col gap-4">
+        {{ title() }}
+
+        @if(type() === 'error') {
+        <div>
+          <button mat-flat-button>Recarregar</button>
+        </div>
+        }
+      </div>
+    </section>
+  </mat-card-content>
+</mat-card>

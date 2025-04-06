@@ -1,0 +1,9 @@
+.card--info {
+  background: var(--mat-sys-primary-container) !important;
+  color: var(--mat-sys-on-primary-container) !important;
+}
+
+.card--error {
+  background: var(--mat-sys-error-container) !important;
+  color: var(--mat-sys-on-error-container) !important;
+}
