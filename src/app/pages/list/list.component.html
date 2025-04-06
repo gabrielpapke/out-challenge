@@ -2,13 +2,19 @@
   <h2 card-title>List movies</h2>
   <div card-content class="pt-4">
     <app-list-table
+      [data]="getMovies$ | async"
       [defaultPageLength]="defaultPageLength"
-      [currentPage]="currentPage()"
       [loading]="loading()"
       [hasError]="hasError()"
-      [data]="getMovies$ | async"
-      (onPageChange)="onPageChange($event)"
       (onFilter)="onFilter($event)"
+    />
+
+    <app-paginator
+      [data]="getMovies$ | async"
+      [defaultPageLength]="defaultPageLength"
+      [loading]="loading()"
+      [currentPage]="currentPage()"
+      (onPageChange)="onPageChange($event)"
     />
   </div>
 </app-card>

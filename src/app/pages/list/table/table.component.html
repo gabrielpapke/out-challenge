@@ -1,9 +1,9 @@
 <app-table
+  [formGroup]="form"
+  [data]="data()?.content"
   [loading]="loading()"
   [shimmerRows]="defaultPageLength()"
-  [data]="data()?.content"
   [hasError]="hasError()"
-  [formGroup]="form"
 >
   <ng-container matColumnDef="id">
     <span mat-header-cell *matHeaderCellDef>ID</span>
@@ -27,45 +27,11 @@
 
   <ng-container matColumnDef="winner">
     <div mat-header-cell *matHeaderCellDef class="flex flex-col max-w-56">
-      <div class="text-center">Winner</div>
-
-      <mat-form-field>
-        <mat-select
-          [placeholder]="'Yes/No'"
-          [formControl]="form.controls.winner"
-        >
-          @for (option of yesNoOptions; track option.label) {
-          <mat-option [value]="option.value">{{ option.label }}</mat-option>
-          }
-        </mat-select>
-
-        @if (form.controls.winner.value) {
-        <button
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="clearWinnerFilter($event)"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-        }
-      </mat-form-field>
+      <app-winner-header-cell
+        [control]="form.controls.winner"
+        (onClearWinnerFilter)="clearWinnerFilter()"
+      />
     </div>
     <span mat-cell *matCellDef="let element">{{ element.winner | yesNo }}</span>
   </ng-container>
 </app-table>
-
-<!-- Paginator -->
-@if (data()?.content?.length) {
-<mat-paginator
-  (page)="pageChange($event)"
-  [length]="data()?.totalElements"
-  [pageSize]="defaultPageLength()"
-  [disabled]="loading()"
-  [hidePageSize]="true"
-  [showFirstLastButtons]="true"
-  [pageIndex]="currentPage()"
-  aria-label="Select page"
->
-</mat-paginator>
-}

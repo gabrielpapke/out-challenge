@@ -1,0 +1,20 @@
+<div class="text-center">Winner</div>
+
+<mat-form-field>
+  <mat-select [placeholder]="'Yes/No'" [formControl]="control()">
+    @for (option of yesNoOptions; track option.label) {
+    <mat-option [value]="option.value">{{ option.label }}</mat-option>
+    }
+  </mat-select>
+
+  @if (control().value) {
+  <button
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="clearWinnerFilter($event)"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+  }
+</mat-form-field>

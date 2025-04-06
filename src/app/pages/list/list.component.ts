@@ -5,10 +5,17 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { MoviesService } from '@services/movies.service';
 import { CardComponent } from '@ui/card/card.component';
-import { BehaviorSubject, catchError, EMPTY, finalize, switchMap } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  EMPTY,
+  finalize,
+  shareReplay,
+  switchMap,
+} from 'rxjs';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 import { IMovieFilter } from './interfaces/movies-filter.interface';
 import { ListTableComponent } from './table/table.component';
 
@@ -17,8 +24,8 @@ import { ListTableComponent } from './table/table.component';
   imports: [
     CommonModule,
     CardComponent,
-    MatPaginatorModule,
     ListTableComponent,
+    PaginatorComponent,
   ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
@@ -31,19 +38,17 @@ export class ListComponent {
     page: 0,
     size: this.defaultPageLength,
   };
+  private params$ = new BehaviorSubject<Partial<IMovieFilter>>(
+    this.defaultParams
+  );
 
   moviesService = inject(MoviesService);
   loading = signal(true);
   hasError = signal(false);
   currentPage = signal(0);
-
   currentFilter = signal<Partial<IMovieFilter>>(this.defaultParams);
 
-  private params$ = new BehaviorSubject<Partial<IMovieFilter>>(
-    this.defaultParams
-  );
-
-  getMovies$ = this.params$.pipe(
+  protected getMovies$ = this.params$.pipe(
     switchMap((params) => {
       this.loading.set(true);
       this.hasError.set(false);
@@ -59,7 +64,8 @@ export class ListComponent {
           return EMPTY;
         })
       );
-    })
+    }),
+    shareReplay(1)
   );
 
   onPageChange(page: number) {

@@ -13,12 +13,6 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTableModule } from '@angular/material/table';
 import { TableModule } from '@ui/table/table.component.module';
 import {
   BehaviorSubject,
@@ -30,6 +24,7 @@ import {
 } from 'rxjs';
 import { IMovieData } from 'src/app/interfaces/list-movies.interface';
 import { YesNoPipe } from 'src/app/pipes/yes-no.pipe';
+import { WinnerHeaderCellComponent } from '../components/winner-header-cell/winner-header-cell.component';
 import { YearHeaderCellComponent } from '../components/year-header-cell/year-header-cell.component';
 import { IMovieFilter } from '../interfaces/movies-filter.interface';
 
@@ -37,17 +32,12 @@ import { IMovieFilter } from '../interfaces/movies-filter.interface';
   selector: 'app-list-table',
   imports: [
     CommonModule,
-    MatTableModule,
     TableModule,
     YesNoPipe,
     FormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
     ReactiveFormsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatPaginatorModule,
     YearHeaderCellComponent,
+    WinnerHeaderCellComponent,
   ],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
@@ -60,18 +50,11 @@ export class ListTableComponent {
   );
 
   data = input.required<IMovieData | null>();
-  currentPage = input.required<number>();
   defaultPageLength = input.required<number>();
   loading = input.required<boolean>();
   hasError = input.required<boolean>();
 
-  yesNoOptions = [
-    { value: 'true', label: 'Yes' },
-    { value: 'false', label: 'No' },
-  ];
-
   onFilter = output<Partial<IMovieFilter>>();
-  onPageChange = output<number>();
 
   form = new FormGroup({
     year: new FormControl('', {
@@ -119,9 +102,7 @@ export class ListTableComponent {
     );
   }
 
-  clearWinnerFilter(event: Event) {
-    event.stopPropagation();
-
+  clearWinnerFilter() {
     this.form.controls.winner.reset();
   }
 
@@ -136,10 +117,6 @@ export class ListTableComponent {
       .subscribe({
         next: this.emitFilter.bind(this),
       });
-  }
-
-  pageChange(event: PageEvent) {
-    this.onPageChange.emit(event.pageIndex);
   }
 
   emitFilter() {
