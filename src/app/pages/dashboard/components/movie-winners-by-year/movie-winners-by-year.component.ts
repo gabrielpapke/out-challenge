@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
-import { IMovie } from 'src/app/interfaces/movie.interface';
+import { Component, inject, signal } from '@angular/core';
 
-import { moviesMock } from '@mocks/movies-content.mock';
+import { AsyncPipe } from '@angular/common';
+import { MoviesService } from '@services/movies.service';
 import { CardComponent } from '@ui/card/card.component';
+import { withLoadingAndError } from '@utils/observable-loading-error.util';
+import { shareReplay } from 'rxjs';
 import { MovieWinnersByYearSearchFormComponent } from './search-form/search-form.component';
 import { MovieWinnersByYearTableComponent } from './table/table.component';
 
 @Component({
   selector: 'app-movie-winners-by-year',
   imports: [
+    AsyncPipe,
     CardComponent,
     MovieWinnersByYearSearchFormComponent,
     MovieWinnersByYearTableComponent,
@@ -17,5 +20,18 @@ import { MovieWinnersByYearTableComponent } from './table/table.component';
   styleUrl: './movie-winners-by-year.component.scss',
 })
 export class MovieWinnersByYearComponent {
-  data: IMovie[] = moviesMock;
+  moviesService = inject(MoviesService);
+
+  loading = signal(true);
+  hasError = signal(false);
+
+  data$ = this.moviesService
+    .getMovies({ page: 0, size: 999, winner: true })
+    .pipe(
+      withLoadingAndError(
+        this.loading.set.bind(this.loading),
+        this.hasError.set.bind(this.hasError)
+      ),
+      shareReplay(1)
+    );
 }

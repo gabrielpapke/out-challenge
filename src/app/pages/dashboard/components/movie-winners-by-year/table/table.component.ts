@@ -9,5 +9,7 @@ import { IMovie } from 'src/app/interfaces/movie.interface';
   styleUrl: './table.component.scss',
 })
 export class MovieWinnersByYearTableComponent {
-  data = input.required<IMovie[]>();
+  data = input.required<IMovie[] | undefined>();
+  loading = input.required<boolean>();
+  hasError = input.required<boolean>();
 }

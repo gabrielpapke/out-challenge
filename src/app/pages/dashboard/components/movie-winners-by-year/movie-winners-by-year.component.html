@@ -3,6 +3,10 @@
   <div card-content class="pt-4">
     <app-movie-winners-by-year-search-form />
 
-    <app-movie-winners-by-year-table [data]="data" />
+    <app-movie-winners-by-year-table
+      [data]="(data$ | async)?.content"
+      [hasError]="hasError()"
+      [loading]="loading()"
+    />
   </div>
 </app-card>
