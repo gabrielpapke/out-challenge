@@ -35,6 +35,10 @@ export class MovieWinnersByYearSearchFormComponent {
     }),
   });
 
+  get yearValue(): string {
+    return this.form.controls.year.value;
+  }
+
   onClearYearFilter() {
     if (this.lastValueFiltered()) {
       this.lastValueFiltered.set('');
@@ -45,10 +49,8 @@ export class MovieWinnersByYearSearchFormComponent {
   }
 
   onSubmit() {
-    const value = this.form.controls.year.value;
+    this.lastValueFiltered.set(this.yearValue);
 
-    this.lastValueFiltered.set(value);
-
-    this.onSearch.emit(value);
+    this.onSearch.emit(this.yearValue);
   }
 }

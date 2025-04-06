@@ -6,6 +6,7 @@
       [hasError]="hasError()"
       [data]="data$ | async"
       [shimmerRows]="3"
+      (onRetry)="onRetry()"
     >
       <ng-container matColumnDef="year">
         <span mat-header-cell *matHeaderCellDef>Year</span>

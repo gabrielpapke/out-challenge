@@ -1,11 +1,11 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ViewChild } from '@angular/core';
 
 import { AsyncPipe, NgIf } from '@angular/common';
 import { IMovieFilter } from '@pages/list/interfaces/movies-filter.interface';
 import { MoviesService } from '@services/movies.service';
 import { CardComponent } from '@ui/card/card.component';
 import { withLoadingAndError } from '@utils/observable-loading-error.util';
-import { BehaviorSubject, finalize, switchMap } from 'rxjs';
+import { BehaviorSubject, finalize, switchMap, tap } from 'rxjs';
 import { MovieWinnersByYearSearchFormComponent } from './search-form/search-form.component';
 import { MovieWinnersByYearTableComponent } from './table/table.component';
 
@@ -24,6 +24,8 @@ import { MovieWinnersByYearTableComponent } from './table/table.component';
 export class MovieWinnersByYearComponent {
   moviesService = inject(MoviesService);
 
+  @ViewChild('searchForm') searchForm?: MovieWinnersByYearSearchFormComponent;
+
   private readonly defaultParams: Partial<IMovieFilter> = {
     page: 0,
     size: 999,
@@ -33,14 +35,17 @@ export class MovieWinnersByYearComponent {
   loading = signal(true);
   hasError = signal(false);
   firstLoading = signal(true);
+  lastYearValue = signal('');
 
   year$ = new BehaviorSubject<string>('');
 
   data$ = this.year$.pipe(
-    switchMap((year) => {
+    tap(() => {
       this.loading.set(true);
       this.hasError.set(false);
-
+    }),
+    switchMap((year) => {
+      this.lastYearValue.set(year);
       const params = this.mountFilter(year);
 
       return this.moviesService.getMovies(params).pipe(
@@ -65,5 +70,9 @@ export class MovieWinnersByYearComponent {
 
   onSearch(year: string) {
     this.year$.next(year);
+  }
+
+  onRetry() {
+    this.year$.next(this.searchForm?.yearValue ?? '');
   }
 }

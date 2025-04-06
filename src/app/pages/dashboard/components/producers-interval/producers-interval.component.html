@@ -1,17 +1,25 @@
 <app-card>
   <h2 card-title>Producers with longest and shortest interval between wins</h2>
   <div card-content class="flex flex-col gap-4">
+    @if (!hasError()) {
     <app-producers-interval-table
       title="Maximum"
       [data]="(data$ | async)?.max"
-      [hasError]="hasError()"
+      [hasError]="false"
       [loading]="loading()"
     />
     <app-producers-interval-table
       title="Minimum"
       [data]="(data$ | async)?.min"
-      [hasError]="hasError()"
+      [hasError]="false"
       [loading]="loading()"
     />
+    } @else {
+    <app-state
+      type="error"
+      title="Tivemos um problema. Tente novamente mais tarde."
+      (onRetry)="onRetry()"
+    />
+    }
   </div>
 </app-card>

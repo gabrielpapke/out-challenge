@@ -4,7 +4,7 @@ import { MoviesService } from '@services/movies.service';
 import { CardComponent } from '@ui/card/card.component';
 import { TableModule } from '@ui/table/table.component.module';
 import { withLoadingAndError } from '@utils/observable-loading-error.util';
-import { map } from 'rxjs';
+import { BehaviorSubject, map, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-years-multiple-winners',
@@ -18,11 +18,25 @@ export class YearsMultipleWinnersComponent {
   loading = signal(true);
   hasError = signal(false);
 
-  data$ = this.moviesService.getYearsMultipleWinners().pipe(
-    map((data) => data.years),
-    withLoadingAndError(
-      this.loading.set.bind(this.loading),
-      this.hasError.set.bind(this.hasError)
+  private fetch$ = new BehaviorSubject<void>(undefined);
+
+  data$ = this.fetch$.pipe(
+    tap(() => {
+      this.loading.set(true);
+      this.hasError.set(false);
+    }),
+    switchMap(() =>
+      this.moviesService.getYearsMultipleWinners().pipe(
+        map((data) => data.years),
+        withLoadingAndError(
+          this.loading.set.bind(this.loading),
+          this.hasError.set.bind(this.hasError)
+        )
+      )
     )
   );
+
+  onRetry() {
+    this.fetch$.next();
+  }
 }

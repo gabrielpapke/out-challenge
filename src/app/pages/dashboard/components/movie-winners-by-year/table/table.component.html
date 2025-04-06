@@ -5,6 +5,7 @@
     [data]="data()"
     [stickyHeader]="true"
     [shimmerRows]="6"
+    (onRetry)="onRetry.emit()"
   >
     <ng-container matColumnDef="id">
       <span mat-header-cell *matHeaderCellDef>ID</span>
