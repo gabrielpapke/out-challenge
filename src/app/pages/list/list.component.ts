@@ -33,9 +33,10 @@ import { IMovieFilter } from './interfaces/movies-filter.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListComponent {
+  private readonly defaultInitialPage = 0;
   protected readonly defaultPageLength = 15;
   protected readonly defaultParams: Partial<IMovieFilter> = {
-    page: 0,
+    page: this.defaultInitialPage,
     size: this.defaultPageLength,
   };
   private params$ = new BehaviorSubject<Partial<IMovieFilter>>(
@@ -45,14 +46,14 @@ export class ListComponent {
   moviesService = inject(MoviesService);
   loading = signal(true);
   hasError = signal(false);
-  currentPage = signal(0);
+  currentPage = signal(this.defaultInitialPage);
   currentFilter = signal<Partial<IMovieFilter>>(this.defaultParams);
 
   protected getMovies$ = this.params$.pipe(
     switchMap((params) => {
       this.loading.set(true);
       this.hasError.set(false);
-      this.currentPage.set(params.page ?? 0);
+      this.currentPage.set(params.page ?? this.defaultInitialPage);
       this.currentFilter.set(params);
 
       return this.moviesService.getMovies(params).pipe(
