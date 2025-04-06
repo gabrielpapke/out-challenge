@@ -1,10 +1,10 @@
 import { Component, inject, signal } from '@angular/core';
 
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { MoviesService } from '@services/movies.service';
 import { CardComponent } from '@ui/card/card.component';
 import { withLoadingAndError } from '@utils/observable-loading-error.util';
-import { shareReplay } from 'rxjs';
+import { finalize, shareReplay } from 'rxjs';
 import { MovieWinnersByYearSearchFormComponent } from './search-form/search-form.component';
 import { MovieWinnersByYearTableComponent } from './table/table.component';
 
@@ -12,6 +12,7 @@ import { MovieWinnersByYearTableComponent } from './table/table.component';
   selector: 'app-movie-winners-by-year',
   imports: [
     AsyncPipe,
+    NgIf,
     CardComponent,
     MovieWinnersByYearSearchFormComponent,
     MovieWinnersByYearTableComponent,
@@ -24,6 +25,7 @@ export class MovieWinnersByYearComponent {
 
   loading = signal(true);
   hasError = signal(false);
+  firstLoading = signal(true);
 
   data$ = this.moviesService
     .getMovies({ page: 0, size: 999, winner: true })
@@ -32,6 +34,7 @@ export class MovieWinnersByYearComponent {
         this.loading.set.bind(this.loading),
         this.hasError.set.bind(this.hasError)
       ),
+      finalize(() => this.firstLoading.set(false)),
       shareReplay(1)
     );
 }

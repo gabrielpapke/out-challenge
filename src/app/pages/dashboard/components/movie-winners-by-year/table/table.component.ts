@@ -1,10 +1,10 @@
 import { Component, input } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
+import { TableModule } from '@ui/table/table.component.module';
 import { IMovie } from 'src/app/interfaces/movie.interface';
 
 @Component({
   selector: 'app-movie-winners-by-year-table',
-  imports: [MatTableModule],
+  imports: [TableModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
 })
