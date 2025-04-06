@@ -8,9 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "docs": "npx compodoc -p tsconfig.doc.json -d docs",
+    "copy:docs": "cp -R ./docs ./dist/out-challenge/browser/docs",
     "test:prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
-    "postbuild": "cp -R docs dist/out-challenge/browser/docs",
-    "build:all": "npm run build && npm run docs"
+    "build:all": "npm run build && npm run docs && npm run copy:docs"
   },
   "private": true,
   "dependencies": {
