@@ -1,13 +1,17 @@
 <app-card>
   <h2 card-title>Producers with longest and shortest interval between wins</h2>
-  <div card-content class="pt-4">
+  <div card-content class="pt-8 flex flex-col gap-4">
     <app-producers-interval-table
       title="Maximum"
-      [dataSource]="dataSource.max"
+      [data]="(data$ | async)?.max"
+      [hasError]="hasError()"
+      [loading]="loading()"
     />
     <app-producers-interval-table
       title="Minimum"
-      [dataSource]="dataSource.min"
+      [data]="(data$ | async)?.min"
+      [hasError]="hasError()"
+      [loading]="loading()"
     />
   </div>
 </app-card>
