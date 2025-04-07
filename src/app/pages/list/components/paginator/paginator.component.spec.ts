@@ -8,16 +8,20 @@ describe('PaginatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PaginatorComponent]
-    })
-    .compileComponents();
+      imports: [PaginatorComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PaginatorComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    fixture.componentRef.setInput('data', []);
+    fixture.componentRef.setInput('currentPage', 0);
+    fixture.componentRef.setInput('defaultPageLength', 15);
+    fixture.componentRef.setInput('loading', false);
+
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

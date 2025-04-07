@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { FormControl } from '@angular/forms';
 import { YearHeaderCellComponent } from './year-header-cell.component';
 
 describe('YearHeaderCellComponent', () => {
@@ -8,16 +9,16 @@ describe('YearHeaderCellComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [YearHeaderCellComponent]
-    })
-    .compileComponents();
+      imports: [YearHeaderCellComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(YearHeaderCellComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    fixture.componentRef.setInput('control', new FormControl());
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

@@ -19,9 +19,12 @@ describe('ProducersIntervalTableComponent', () => {
   it('should create', () => {
     fixture.componentRef.setInput('title', 'test title');
     fixture.componentRef.setInput(
-      'dataSource',
+      'data',
       structuredClone(producersIntervalMock.max)
     );
+    fixture.componentRef.setInput('loading', false);
+    fixture.componentRef.setInput('hasError', false);
+
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });

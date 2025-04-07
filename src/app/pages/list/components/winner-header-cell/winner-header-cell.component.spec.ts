@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { FormControl } from '@angular/forms';
 import { WinnerHeaderCellComponent } from './winner-header-cell.component';
 
 describe('WinnerHeaderCellComponent', () => {
@@ -8,16 +9,16 @@ describe('WinnerHeaderCellComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WinnerHeaderCellComponent]
-    })
-    .compileComponents();
+      imports: [WinnerHeaderCellComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(WinnerHeaderCellComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    fixture.componentRef.setInput('control', new FormControl());
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

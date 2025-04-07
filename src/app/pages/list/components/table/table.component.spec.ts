@@ -19,6 +19,8 @@ describe('ListTableComponent', () => {
   it('should create', () => {
     fixture.componentRef.setInput('data', structuredClone(movieDataMock));
     fixture.componentRef.setInput('loading', false);
+    fixture.componentRef.setInput('hasError', false);
+    fixture.componentRef.setInput('defaultPageLength', 15);
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });
