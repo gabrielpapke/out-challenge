@@ -4,10 +4,10 @@ export interface IListData<T> {
   totalElements: number;
   last: boolean;
   totalPages: number;
-  first: true;
+  first: boolean;
   sort: {
     sorted: boolean;
-    unsorted: true;
+    unsorted: boolean;
   };
   number: number;
   numberOfElements: number;
