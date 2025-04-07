@@ -40,7 +40,7 @@ jobs:
         run: |
           mkdir -p gh-pages/coverage
           mkdir -p gh-pages/docs
-          cp -r coverage/out-challenge/* gh-pages/tests/
+          cp -r coverage/out-challenge/* gh-pages/coverage/
           cp -r docs/* gh-pages/docs/
 
       # Publicar no GitHub Pages
