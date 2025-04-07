@@ -18,6 +18,8 @@ describe('MovieWinnersByYearTableComponent', () => {
 
   it('should create', () => {
     fixture.componentRef.setInput('data', structuredClone(moviesMock));
+    fixture.componentRef.setInput('loading', false);
+    fixture.componentRef.setInput('hasError', false);
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });

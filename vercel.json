@@ -1,8 +1,7 @@
 {
-  "buildCommand": "npm run build:all",
-  "outputDirectory": "dist/out-challenge/browser",
-  "routes": [
-    { "src": "/coverage/(.*)", "dest": "/coverage/$1" },
-    { "src": "/docs/(.*)", "dest": "dist/out-challenge/browser/docs/$1" }
+  "rewrites": [
+    { "source": "/app/(.*)", "destination": "/angular/browser/$1" },
+    { "source": "/docs/(.*)", "destination": "/docs/$1" },
+    { "source": "/coverage/(.*)", "destination": "/coverage/out-challenge/$1" }
   ]
 }

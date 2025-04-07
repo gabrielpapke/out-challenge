@@ -8,16 +8,18 @@ describe('StateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StateComponent]
-    })
-    .compileComponents();
+      imports: [StateComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(StateComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    fixture.componentRef.setInput('title', 'Title');
+    fixture.componentRef.setInput('type', 'info');
+
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

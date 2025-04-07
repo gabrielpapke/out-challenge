@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { MoviesService } from '@services/movies.service';
 import { MovieWinnersByYearComponent } from './movie-winners-by-year.component';
 
 describe('MovieWinnersByYearComponent', () => {
@@ -9,6 +12,11 @@ describe('MovieWinnersByYearComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [MovieWinnersByYearComponent],
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        MoviesService,
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(MovieWinnersByYearComponent);

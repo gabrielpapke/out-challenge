@@ -31,9 +31,7 @@ export class TableComponent implements AfterContentInit {
   onRetry = output<void>();
 
   currentShimmerRows = computed(() => {
-    return (this.data()?.length ?? 0) > 0
-      ? this.data()?.length!
-      : this.shimmerRows();
+    return this.data()?.length! > 0 ? this.data()?.length! : this.shimmerRows();
   });
 
   emptyRows = computed(() =>
