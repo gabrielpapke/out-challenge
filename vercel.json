@@ -1,5 +1,0 @@
-{
-  "build": {
-    "ignoreBuildStep": "bash ./ignore-gh-pages.sh"
-  }
-}
