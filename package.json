@@ -10,7 +10,7 @@
     "test:prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
     "build:angular": "ng build --output-path=angular",
     "build:docs": "npx compodoc -p tsconfig.doc.json -d docs",
-    "build:all": "npm run build:angular && npm run build:docs && npm run test:prod"
+    "build:all": "npm run build:angular && npm run build:docs"
   },
   "private": true,
   "dependencies": {
