@@ -1,27 +1,56 @@
-# OutChallenge
+# Challenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
+Este projeto foi desenvolvido utilizando Angular 19 e está hospedado em [https://out-challenge.vercel.app/](https://out-challenge.vercel.app/).
 
-## Development server
+## Links úteis
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Aplicação**: [https://out-challenge.vercel.app/](https://out-challenge.vercel.app/)
+- **Cobertura de código**: [https://gabrielpapke.github.io/out-challenge/coverage/](https://gabrielpapke.github.io/out-challenge/coverage/)
+- **Documentação**: [https://gabrielpapke.github.io/out-challenge/docs/](https://gabrielpapke.github.io/out-challenge/docs/)
 
-## Code scaffolding
+## Requisitos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Antes de começar, certifique-se de ter os seguintes requisitos instalados em sua máquina:
 
-## Build
+- [Node.js](https://nodejs.org/) (versão 18.19.1 ou superior)
+- [Angular CLI](https://angular.io/cli) (versão 19.2.5 ou superior)
+- Um navegador web moderno
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Passo a passo para rodar o projeto
 
-## Running unit tests
+1. **Clone o repositório**:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+git clone https://github.com/gabrielpapke/out-challenge.git
+cd out-challenge
+```
 
-## Running end-to-end tests
+2. **Instale as dependências**:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+npm install
+```
 
-## Further help
+3. **Inicie o servidor de desenvolvimento**:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm start
+```
+
+O aplicativo estará disponível em [http://localhost:4200/](http://localhost:4200/).
+
+4. **Execute os testes unitários**:
+
+```bash
+npm run test
+```
+
+Isso executará os testes via [Karma](https://karma-runner.github.io).
+
+5. **Gere a build de produção**:
+
+```bash
+npm run build
+```
+
+Os artefatos da build serão armazenados no diretório `dist/`.

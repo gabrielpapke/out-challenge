@@ -36,12 +36,13 @@ jobs:
         run: npm run build:docs
 
       # Copiar os resultados para pastas separadas
-      - name: Prepare coverage and docs for deployment
+      - name: Prepare coverage, docs, and README for deployment
         run: |
           mkdir -p gh-pages/coverage
           mkdir -p gh-pages/docs
           cp -r coverage/out-challenge/* gh-pages/coverage/
           cp -r docs/* gh-pages/docs/
+          cp README.md gh-pages/
 
       # Publicar no GitHub Pages
       - name: Deploy to GitHub Pages
