@@ -1,0 +1,51 @@
+name: Run Tests and Generate Docs
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout do código
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Configurar o Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      # Instalar dependências
+      - name: Install dependencies
+        run: npm install
+
+      # Rodar os testes e gerar cobertura
+      - name: Run tests
+        run: npm run test:prod
+
+      # Gerar a documentação
+      - name: Generate documentation
+        run: npm run build:docs
+
+      # Copiar os resultados para pastas separadas
+      - name: Prepare coverage and docs for deployment
+        run: |
+          mkdir -p gh-pages/coverage
+          mkdir -p gh-pages/docs
+          cp -r coverage/out-challenge* gh-pages/tests/
+          cp -r docs/* gh-pages/docs/
+
+      # Publicar no GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: gh-pages/
