@@ -1,7 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/app/(.*)", "destination": "/angular/browser/$1" },
-    { "source": "/docs/(.*)", "destination": "/docs/$1" },
-    { "source": "/coverage/(.*)", "destination": "/coverage/out-challenge/$1" }
-  ]
-}
