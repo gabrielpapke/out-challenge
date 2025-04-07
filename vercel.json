@@ -1,7 +1,5 @@
 {
-  "git": {
-    "deploymentEnabled": {
-      "gh-pages": false
-    }
+  "build": {
+    "ignoreBuildStep": "bash ./ignore-gh-pages.sh"
   }
 }
