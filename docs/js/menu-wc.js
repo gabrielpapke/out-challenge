@@ -209,6 +209,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/IProducersInterval.html" data-type="entity-link" >IProducersInterval</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/ISort.html" data-type="entity-link" >ISort</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/IStudioTopWinner.html" data-type="entity-link" >IStudioTopWinner</a>
                             </li>
                             <li class="link">

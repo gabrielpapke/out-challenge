@@ -215,8 +215,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="11"
-                                    class="link-to-prism">src/app/services/movies.service.ts:11</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="13"
+                                    class="link-to-prism">src/app/services/movies.service.ts:13</a></div>
                         </td>
                     </tr>
 
@@ -282,8 +282,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="27"
-                                    class="link-to-prism">src/app/services/movies.service.ts:27</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="29"
+                                    class="link-to-prism">src/app/services/movies.service.ts:29</a></div>
                         </td>
                     </tr>
 
@@ -319,8 +319,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="21"
-                                    class="link-to-prism">src/app/services/movies.service.ts:21</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="23"
+                                    class="link-to-prism">src/app/services/movies.service.ts:23</a></div>
                         </td>
                     </tr>
 
@@ -356,8 +356,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="15"
-                                    class="link-to-prism">src/app/services/movies.service.ts:15</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="17"
+                                    class="link-to-prism">src/app/services/movies.service.ts:17</a></div>
                         </td>
                     </tr>
 
@@ -554,7 +554,9 @@ import { Observable } from &#x27;rxjs&#x27;;
 import { IMovieData } from &#x27;../interfaces/list-movies.interface&#x27;;
 import { BaseApiService } from &#x27;./base-api.service&#x27;;
 
-@Injectable()
+@Injectable({
+  providedIn: &#x27;root&#x27;,
+})
 export class MoviesService extends BaseApiService {
   getMovies(params?: { [key: string]: any }): Observable&lt;IMovieData&gt; {
     return this.get&lt;IMovieData&gt;(&#x27;movies&#x27;, params);
