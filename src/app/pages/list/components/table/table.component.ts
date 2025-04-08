@@ -24,7 +24,10 @@ import {
 } from 'rxjs';
 import { IMovieData } from 'src/app/interfaces/list-movies.interface';
 import { YesNoPipe } from 'src/app/pipes/yes-no.pipe';
-import { IMovieFilter } from '../../interfaces/movies-filter.interface';
+import {
+  IMovieFilter,
+  IMovieFilterOptionalParams,
+} from '../../interfaces/movies-filter.interface';
 import { WinnerHeaderCellComponent } from '../winner-header-cell/winner-header-cell.component';
 import { YearHeaderCellComponent } from '../year-header-cell/year-header-cell.component';
 
@@ -54,7 +57,7 @@ export class ListTableComponent {
   loading = input.required<boolean>();
   hasError = input.required<boolean>();
 
-  onFilter = output<Partial<IMovieFilter>>();
+  onFilter = output<IMovieFilterOptionalParams>();
 
   form = new FormGroup({
     year: new FormControl('', {

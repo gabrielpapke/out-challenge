@@ -5,23 +5,24 @@ export interface IListData<T> {
   last: boolean;
   totalPages: number;
   first: boolean;
-  sort: {
-    sorted: boolean;
-    unsorted: boolean;
-  };
+  sort: ISort;
   number: number;
   numberOfElements: number;
   size: number;
+  empty: boolean;
 }
 
 export interface IPageable {
-  sort: {
-    sorted: boolean;
-    unsorted: boolean;
-  };
+  sort: ISort;
   pageSize: number;
   pageNumber: number;
   offset: number;
   paged: boolean;
   unpaged: boolean;
+}
+
+export interface ISort {
+  sorted: boolean;
+  unsorted: boolean;
+  empty: boolean;
 }
