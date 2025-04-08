@@ -263,8 +263,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="43"
-                                    class="link-to-prism">src/app/pages/dashboard/components/top-winners/top-winners.component.ts:43</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="40"
+                                    class="link-to-prism">src/app/pages/dashboard/components/top-winners/top-winners.component.ts:40</a></div>
                         </td>
                     </tr>
 
@@ -306,11 +306,7 @@
     }),
     switchMap(() &#x3D;&gt;
       this.moviesService.getStudiosWithWinCount().pipe(
-        map((data) &#x3D;&gt; {
-          return data.studios
-            .sort((a, b) &#x3D;&gt; b.winCount - a.winCount)
-            .slice(0, 3);
-        }),
+        map((data) &#x3D;&gt; getTopWinnersUtil(data.studios)),
         withLoadingAndError(
           this.loading.set.bind(this.loading),
           this.hasError.set.bind(this.hasError)
@@ -322,7 +318,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/dashboard/components/top-winners/top-winners.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/dashboard/components/top-winners/top-winners.component.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -348,7 +344,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/dashboard/components/top-winners/top-winners.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/dashboard/components/top-winners/top-winners.component.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -373,7 +369,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/pages/dashboard/components/top-winners/top-winners.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/pages/dashboard/components/top-winners/top-winners.component.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -398,7 +394,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pages/dashboard/components/top-winners/top-winners.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/pages/dashboard/components/top-winners/top-winners.component.ts:19</a></div>
                         </td>
                     </tr>
 
@@ -423,7 +419,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/dashboard/components/top-winners/top-winners.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/pages/dashboard/components/top-winners/top-winners.component.ts:17</a></div>
                         </td>
                     </tr>
 
@@ -442,6 +438,7 @@ import { MoviesService } from &#x27;@services/movies.service&#x27;;
 import { CardComponent } from &#x27;@ui/card/card.component&#x27;;
 import { TableModule } from &#x27;@ui/table/table.component.module&#x27;;
 import { withLoadingAndError } from &#x27;@utils/observable-loading-error.util&#x27;;
+import { getTopWinners as getTopWinnersUtil } from &#x27;@utils/top-winners.util&#x27;;
 import { BehaviorSubject, map, switchMap, tap } from &#x27;rxjs&#x27;;
 
 @Component({
@@ -465,11 +462,7 @@ export class TopWinnersComponent {
     }),
     switchMap(() &#x3D;&gt;
       this.moviesService.getStudiosWithWinCount().pipe(
-        map((data) &#x3D;&gt; {
-          return data.studios
-            .sort((a, b) &#x3D;&gt; b.winCount - a.winCount)
-            .slice(0, 3);
-        }),
+        map((data) &#x3D;&gt; getTopWinnersUtil(data.studios)),
         withLoadingAndError(
           this.loading.set.bind(this.loading),
           this.hasError.set.bind(this.hasError)

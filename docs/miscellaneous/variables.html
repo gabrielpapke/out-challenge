@@ -120,6 +120,9 @@
                         <li>
                             <a href="#environment" title="src/environments/environment.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(src/.../environment.ts)</a>
                         </li>
+                        <li>
+                            <a href="#getTopWinners" title="src/app/utils/top-winners.util.ts" ><b>getTopWinners</b>&nbsp;&nbsp;&nbsp;(src/.../top-winners.util.ts)</a>
+                        </li>
                     </ul>
                 </td>
             </tr>
@@ -220,6 +223,31 @@
                         <i>Default value : </i><code>{
   production: false,
   apiUrl: &#x27;https://challenge.outsera.tech/api&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/utils/top-winners.util.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTopWinners"></a>
+                    <span class="name">
+                        <span ><b>getTopWinners</b></span>
+                        <a href="#getTopWinners"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(studios: IStudioTopWinnerItem[]) &#x3D;&gt; {
+  return studios.sort((a, b) &#x3D;&gt; b.winCount - a.winCount).slice(0, 3);
 }</code>
                     </td>
                 </tr>
