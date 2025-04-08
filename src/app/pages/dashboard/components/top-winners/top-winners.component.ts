@@ -4,6 +4,7 @@ import { MoviesService } from '@services/movies.service';
 import { CardComponent } from '@ui/card/card.component';
 import { TableModule } from '@ui/table/table.component.module';
 import { withLoadingAndError } from '@utils/observable-loading-error.util';
+import { getTopWinners as getTopWinnersUtil } from '@utils/top-winners.util';
 import { BehaviorSubject, map, switchMap, tap } from 'rxjs';
 
 @Component({
@@ -27,11 +28,7 @@ export class TopWinnersComponent {
     }),
     switchMap(() =>
       this.moviesService.getStudiosWithWinCount().pipe(
-        map((data) => {
-          return data.studios
-            .sort((a, b) => b.winCount - a.winCount)
-            .slice(0, 3);
-        }),
+        map((data) => getTopWinnersUtil(data.studios)),
         withLoadingAndError(
           this.loading.set.bind(this.loading),
           this.hasError.set.bind(this.hasError)

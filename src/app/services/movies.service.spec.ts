@@ -5,7 +5,7 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { movieDataMock } from '@mocks/movies-data.mock';
 import { multipleWinnersMock } from '@mocks/multiple-winners.mock';
 import { producersIntervalMock } from '@mocks/producers-interval.mock';
-import { studiosWinCoutMock } from '@mocks/studios-win-count.mock';
+import { studiosWinCountMock } from '@mocks/studios-win-count.mock';
 import { IMovieFilter } from '@pages/list/interfaces/movies-filter.interface';
 import { of } from 'rxjs';
 import { MoviesService } from './movies.service';
@@ -74,7 +74,7 @@ describe('MoviesService', () => {
   });
 
   it('should call getStudiosWithWinCount and return expected data', (done) => {
-    const mockResponse = structuredClone(studiosWinCoutMock);
+    const mockResponse = structuredClone(studiosWinCountMock);
 
     const getSpy = spyOn(service, 'get').and.returnValue(of(mockResponse));
 

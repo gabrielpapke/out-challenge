@@ -1,7 +1,7 @@
 import { of, throwError } from 'rxjs';
 import { withLoadingAndError } from './observable-loading-error.util';
 
-describe('withLoadingAndError', () => {
+describe('withLoadingAndErrorUtil', () => {
   let setLoading: jasmine.Spy;
   let setError: jasmine.Spy;
 
