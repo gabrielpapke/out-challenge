@@ -14,7 +14,7 @@ import { delay, of, throwError } from 'rxjs';
 import { ProducersIntervalTableComponent } from './producers-interval-table/producers-interval-table.component';
 import { ProducersIntervalComponent } from './producers-interval.component';
 
-fdescribe('ProducersIntervalComponent', () => {
+describe('ProducersIntervalComponent', () => {
   let component: ProducersIntervalComponent;
   let fixture: ComponentFixture<ProducersIntervalComponent>;
   let moviesService: jasmine.SpyObj<MoviesService>;
